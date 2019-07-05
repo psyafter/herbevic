@@ -711,16 +711,17 @@ __myevic__ void DrawAPTLines()
 __myevic__ void ShowFireDuration( int line )
 {
 	int x;
+	int digits = FireDuration < 100 ? 0 : FireDuration < 1000 ? 1 : 2;
 	DrawFillRect( 0, line, 63, line+9, 1 );
         DrawPixel( 0, 0, 0 );
         DrawPixel( 63, 0, 0 );
         DrawPixel( 0, line+9, 0 );
         DrawPixel( 63, line+9, 0 );
 	DrawFillRect( 1, line+1, 62, line+8, 0 );
-	x = ( FireDuration > dfProtec / 2 ) ? 5 : 38;
-	DrawValue( x, line+1, FireDuration, 1, 0xB, 0 );
-	DrawImage( x + 15 + 6 * ( FireDuration > 99 ), line+1, 0x94 );
-	InvertRect( 1, line+1, 3 + 59 * FireDuration / dfProtec, line+8 );   
+	x = ( FireDuration > dfProtec * 10 / 2 ) ? 5 : 48 - 6 * digits;
+	DrawValue( x, line+1, FireDuration / 10, 0, 0xB, 0 );
+	DrawImage( x + 7 + 6 * digits, line+1, 0x94 );
+	InvertRect( 1, line+1, 3 + 59 * FireDuration / (dfProtec * 10), line+8 );   
 
 }
 
@@ -1243,7 +1244,8 @@ __myevic__ void ShowMainView()
                 sx = 0;
                 DrawHLineDots( 0, 41, 63, 1 ); //main first h-lines
             }
-            
+	    /*
+            */
 //////////////
             
             if ( Screen == 2 || Screen == 23 || EditModeTimer ) //fire long_fire_protec

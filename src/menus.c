@@ -338,7 +338,7 @@ __myevic__ void VapingMenuIDraw( int it, int line, int sel )
 		case 5:	// Protec
 			DrawFillRect( 34, line, 63, line+12, 0 );
 			DrawImageRight( 63, line+2, 0x94 );
-			DrawValueRight( 57, line+2, dfProtec, 1, 0x0B, 0 );
+			DrawValueRight( 57, line+2, dfProtec, 0, 0x0B, 0 );
 			//if ( sel && gFlags.edit_value )
 			//	InvertRect( 0, line, 63, line+12 );
 			break;
@@ -568,7 +568,7 @@ __myevic__ int VapingMenuOnEvent( int event )
                         switch ( CurrentMenuItem )
 			{                    
                                 case 5: //protec
-                                        dfProtec = 100;
+                                        dfProtec = FIRE_PROTEC_DEF;
                                         vret = 1;
                                         break;
 
