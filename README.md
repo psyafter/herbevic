@@ -88,6 +88,7 @@ A list of some differences from the original firmware (google translate)
     * Sharky1980
     * gdb
     * Dil3mm4 (documentation)
+    * MicroSur (sme)
 
     And many others, supporting this project and taking the time to open or help solving issues.
 
