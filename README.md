@@ -1,4 +1,4 @@
-## **SME ( sur_myevic )**
+## **Herbevic/SME ( sur_myevic )**
 
 #### [Документация на русском](https://github.com/MicroSur/sur_myevic/blob/master/README_ru.md)
 
@@ -91,5 +91,3 @@ A list of some differences from the original firmware (google translate)
     * MicroSur (sme)
 
     And many others, supporting this project and taking the time to open or help solving issues.
-
-    Donations to buy mods for support by this firmware (for MicroSur): paypal.me/MicroSur
