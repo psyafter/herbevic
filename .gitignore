@@ -57,7 +57,7 @@ driver/*.sys
 *.map
 genuine/
 wrkspc.txt
-!/bin/
+/bin/
 /bin/myevic.elf
 /nbproject/
 /driver/
