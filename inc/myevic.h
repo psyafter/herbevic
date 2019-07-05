@@ -27,7 +27,7 @@
 #define	ISANIMSAVER(m) ( ( (m)>0 ) && ( (m)<5 ) ) //SSAVER_3D SSAVER_QIX SSAVER_SNOW  SSAVER_SF
 //-------------------------------------------------------------------------
 
-#define FWVERSION	111
+#define FWVERSION	200
 
 #define __BUILD1	( __DAY__ + __MONTH__ * 100 + ( __YEAR__ % 100 ) * 10000 )
 
