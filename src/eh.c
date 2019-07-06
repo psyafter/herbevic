@@ -136,23 +136,17 @@ __myevic__ void TempPlus()
 	if ( dfStatus.IsCelsius )
 	{
 		dfTemp += dfStatus.onedegree ? 1 : 5;
-                        //if ( !dfStatus.onedegree )
-                        // {
-			//dfTemp -= dfTemp % 5;
-                        //}
                                 
-		if ( dfTemp > 995 ) //315
+		if ( dfTemp > 995 ) 
 		{
-			//dfTemp = ( KeyTicks < 5 ) ? 100 : 315;
                         dfTemp = ( KeyTicks < 5 ) ? 5 : 995;
 		}
 	}
 	else
 	{
 		dfTemp += dfStatus.onedegree ? 5 : 10;
-		if ( dfTemp > 995 ) //600
+		if ( dfTemp > 995 ) 
 		{
-			//dfTemp = ( KeyTicks < 5 ) ? 200 : 600;
                         dfTemp = ( KeyTicks < 5 ) ? 35 : 995;
 		}
 	}
@@ -168,7 +162,6 @@ __myevic__ void TempMinus()
 		dfTemp -= dfStatus.onedegree ? 1 : 5;
 		if ( dfTemp < 5 ) //100
 		{
-			//dfTemp = ( KeyTicks < 5 ) ? 315 : 100;
                         dfTemp = ( KeyTicks < 5 ) ? 995 : 5;
 		}
 	}
@@ -177,21 +170,11 @@ __myevic__ void TempMinus()
 		dfTemp -= dfStatus.onedegree ? 5 : 10;
 		if ( dfTemp < 35 ) //200
 		{
-			//dfTemp = ( KeyTicks < 5 ) ? 600 : 200;
                         dfTemp = ( KeyTicks < 5 ) ? 995 : 35;
 		}
 	}
 }
 
-/*
-__myevic__ void UpdatePTT()
-{
-    			UpdatePTTimer = 80;
-			EditModeTimer = 1000;
-			gFlags.refresh_display = 1;
-			gFlags.draw_edited_item = 1;
-}
-*/
 
 //----- (000039E0) --------------------------------------------------------
 __myevic__ void EventHandler()
@@ -259,18 +242,12 @@ __myevic__ void EventHandler()
 			if ( BatteryStatus == 2 )
 			{
                                 SetScreen( 56, 2 );
-				//Screen = 56; // Check Battery
-				//ScreenDuration = 2;
-				//gFlags.refresh_display = 1;
 				return;
 			}
 
 			if ( BatteryStatus == 3 )
 			{
                                 SetScreen( 57, 2 );
-				//Screen = 57; // Check USB Adapter
-				//ScreenDuration = 2;
-				//gFlags.refresh_display = 1;
 				return;
 			}
 
@@ -353,17 +330,8 @@ __myevic__ void EventHandler()
 				NewMillis = AtoMillis;
 
                                 int lock = GetLockState();
-				//uint8_t lock = 0;
-				//if 	( dfMode == 0 ) lock = dfRezLockedNI;
-				//else if ( dfMode == 1 ) lock = dfRezLockedTI;
-				//else if ( dfMode == 2 ) lock = dfRezLockedSS;
-				//else if ( dfMode == 3 ) lock = dfRezLockedTCR;
 
-                                //#define ISMODEVW(m) (((m)==4)||((m)==6))
-                                //#define ISMODEBY(m) ((m)==5)
-                                
-                                //if ( !lock ) //|| dfMode == 4 || dfMode == 5 || dfMode == 6 )      
-                                if ( !lock ) //&& !ISMODETC(dfMode) )    
+                                if ( !lock )    
 				{
 					dfResistance = AtoRez;
 					RezMillis = AtoMillis;
@@ -672,21 +640,6 @@ __myevic__ void EventHandler()
 
 				case 4: //tcr
                                         TCR = dfTCRM[0];                          
-/*
-					//if ( dfMode >= 3 ) //== 3 || dfMode == 4 || dfMode == 5 ) //for power & bypass smart too
-                                        if ( dfMode == 3 )
-					{
-						TCR = dfTCRM[dfTCRIndex]; //m1 m2 m3
-					}
-					//else if ( dfMode < 3 )
-					//{
-					//	TCR = dfTCRP[dfMode]; //ni ti ss custom TCR
-					//}
-                                        else if ( dfMode > 3 )
-                                        {
-                                                TCR = dfTCRM[0];
-                                        }
-*/
 					break;
                                         
                                 case 5: 
@@ -877,9 +830,6 @@ __myevic__ void EventHandler()
 				StopFire();
                         
                         SetScreen( 2, 1 );
-			//gFlags.refresh_display = 1;
-			//Screen = 2; //on fire screen
-			//ScreenDuration = 1;
 			return;
 		}
 
@@ -895,37 +845,18 @@ __myevic__ void EventHandler()
 			//	return;
                         
                         SetScreen( 54, 30 );
-			//gFlags.refresh_display = 1;
-			//Screen = 54;
-			//ScreenDuration = 5;
 			return;
 
 		case 32:	// New coil
 			StopFire();
                         SetScreen( 51, 10 );
-			//gFlags.refresh_display = 1;
-			//Screen = 51;
-			//ScreenDuration = 10;
 			return;
-
-/*
-		case 31:	// Show board temperature
-			if ( dfStatus.off )
-				return;
-			gFlags.refresh_display = 1;
-			Screen = 37;
-			ScreenDuration = 5;
-			return;
-*/
 
 		case 30:	// Key lock violation // show locked status
 			if ( dfStatus.off )
 				return;
                         
                         SetScreen( 28, 2 );
-			//gFlags.refresh_display = 1;
-			//Screen = 28;
-			//ScreenDuration = 2;
 			return;
 
 		case 29:	// FW Version screen
@@ -933,69 +864,42 @@ __myevic__ void EventHandler()
 				return;
                         
                         SetScreen( 50, 10 );
-			//gFlags.refresh_display = 1;
-			//Screen = 50;
-			//ScreenDuration = 10;
 			return;
 
 		case 28:
 			StopFire();
 			KeyPressTime |= 0x8000;
                         SetScreen( 24, 3 );
-			//gFlags.refresh_display = 1;
-			//Screen = 24; // Battery Low
-			//ScreenDuration = 2;
 			return;
 
 		case 27:	// Atomizer Low
 			StopFire();
                         SetScreen( 22, 3 );
-			//gFlags.refresh_display = 1;
-			//Screen = 22;
-			//ScreenDuration = 2;
 			KeyPressTime |= 0x8000;
 			return;
 
 		case 26:	// No Atomizer Found
 			StopFire();
                         SetScreen( 20, 3 );
-			//gFlags.refresh_display = 1;
-			//Screen = 20;
-			//ScreenDuration = 2;
 			return;
 
 		case 25:	// Atomizer short
                         SetScreen( 21, 3 );
-			//gFlags.refresh_display = 1;
-			//Screen = 21;
-			//ScreenDuration = 2;
 			return;
                         
 		case 70:	// Atomizer short current
                         SetScreen( 70, 3 );
-			//gFlags.refresh_display = 1;
-			//Screen = 70;
-			//ScreenDuration = 2;
 			return;
                         
                 case 71:	// Atomizer short Bad contact
                         SetScreen( 71, 3 );
-			//gFlags.refresh_display = 1;
-			//Screen = 71;
-			//ScreenDuration = 2;
 			return;
                         
 		case 24:	// 10s Fire protection
 			StopFire();
 			if ( AtoError )
 				return;
-			//if ( FireDuration >= dfProtec ) //FIRE_PROTEC_MAX  from call
-			//{
-                                SetScreen( 23, 3 );
-				//gFlags.refresh_display = 1;
-				//Screen = 23;
-				//ScreenDuration = 3;
-			//}
+                        SetScreen( 23, 3 );
 			return;
 
 		case 23:	// Reset Time counter
@@ -1015,14 +919,6 @@ __myevic__ void EventHandler()
 			gFlags.draw_edited_item = 1;
 			return;
                         
-		//case 20:	// Show Info
-		//	if ( dfStatus.off )
-		//		return;
-		//	gFlags.refresh_display = 1;
-		//	Screen = 100;
-		//	ScreenDuration = 10;
-		//	return;
-                        
 		case 18:	// Flip display
 			if ( !dfStatus.off )
 				return;
@@ -1031,9 +927,6 @@ __myevic__ void EventHandler()
                         dfStatus2.swap_mp ^= 1;
 			InitDisplay();
                         SetScreen( 1, 2 );
-			//gFlags.refresh_display = 1;
-			//Screen = 1;
-			//ScreenDuration = 2;
 			UpdateDataFlash();
 			return;
 
@@ -1081,8 +974,6 @@ __myevic__ void EventHandler()
 				else
 				{
                                         SetScreen( 61, SwitchOffCase ? 3 : 2 ); //goodbye
-				//	Screen = 0;
-				//	SleepTimer = 0;
 				}
                                 
 			}
@@ -1175,9 +1066,6 @@ __myevic__ void EventHandler()
 			gFlags.usb_attached = 0;
 			gFlags.battery_charging = 0;
                         dfStatus.usbchghotoff = 0;
-			//gFlags.monitoring = 0; not used
-                        
-                        //gFlags.refresh_display = 1;
                         
 			if ( Screen == 5 )
 			{
@@ -1190,7 +1078,6 @@ __myevic__ void EventHandler()
 						SleepTimer = 0;
 					else
                                                 DarkScreen();
-						//SleepTimer = dfDimOffTimeout * 100; //18000;
 				}
 				else
 				{
@@ -1238,14 +1125,10 @@ __myevic__ void EventHandler()
 			if ( dfStatus.off )
 				return;
                         
-			//dfStealthOn = ( dfStealthOn == 0 );
-                        if ( ++dfStealthOn > 2 ) 
+                       if ( ++dfStealthOn > 2 ) 
                             dfStealthOn = 0; // 2 fire contrast
                         
                         SetScreen( 40, 2 );
-			//gFlags.refresh_display = 1;
-			//Screen = 40;
-			//ScreenDuration = 2;
 			return;
 
 		case 4:		// Key (Un)Lock
@@ -1270,12 +1153,8 @@ __myevic__ void EventHandler()
                     
                         if ( Screen == 5 ) //&& dfStealthOn != 1 ) //charge scr on off
 			{
-				//gFlags.screen_on = ( gFlags.screen_on == 0 );  
-                            
                                 gFlags.screen_on ^= 1;                            
-                                //ScreenDuration = ScrChargeTimes[dfScrChargeTime]; //ScreenDuration = 0;                               
-                                //gFlags.refresh_display = 1;
-                                
+                                 
                                 ChargeView();
 			}
                                             
@@ -1359,16 +1238,6 @@ __myevic__ void EventHandler()
                                                         {
 								EditItemIndex = 4;                                  
                                                         }
-/*
-							if ( EditItemIndex == 0 )
-							{
-								EditItemIndex = 6;
-							}
-							else
-							{
-								EditItemIndex = 0;
-							}
-*/
 						}
 						else
 // change info lines for edit
@@ -1409,16 +1278,6 @@ __myevic__ void EventHandler()
 						if ( ConfigIndex < 10 )
 						{
                                                         SmartPowerPM( 0 ); 
-/*
-							spwr = dfSavedCfgPwr[ConfigIndex];
-							spwr -= spwr % WattsInc; //10;
-							spwr -= WattsInc; //10;
-							if ( spwr < AtoMinPower ) spwr = AtoMinPower;
-
-							dfSavedCfgPwr[ConfigIndex] = spwr;
-							dfVWVolts = GetAtoVWVolts( spwr, AtoRez );
-                                                        //dfPower = spwr;
-*/
 						}
 					}
 					else if ( dfMode == 4 )
@@ -1426,10 +1285,6 @@ __myevic__ void EventHandler()
 						PowerMinus( &dfPower, AtoMinPower, AtoMaxPower );
 						VWVolts = GetAtoVWVolts( dfPower, AtoRez );
                                                 dfVVLockedVolt = GetAtoVWVolts( dfPower, dfResistance );
-						//if ( ConfigIndex < 10 && !AtoError && AtoRez )
-						//{
-						//	dfSavedCfgPwr[ConfigIndex] = dfPower;
-						//}
 					}
 				}
 
@@ -1569,22 +1424,6 @@ __myevic__ void EventHandler()
                                                         {
                                                             if ( ++dfBattLine > 2 ) dfBattLine = 0;
                                                         }
-/*
-							if ( !dfStatus.battpc )
-							{
-								dfStatus.battpc = 1;
-								dfStatus.battv = 0;
-							}
-							else if ( !dfStatus.battv )
-							{
-								dfStatus.battv = 1;
-							}
-							else
-							{
-								dfStatus.battv = 0;
-								dfStatus.battpc = 0;
-							}
-*/
 							break;
 					}
 
@@ -1604,10 +1443,6 @@ __myevic__ void EventHandler()
 							PowerPlus( &dfPower, AtoMinPower, AtoMaxPower );
 							VWVolts = GetAtoVWVolts( dfPower, AtoRez );
                                                         dfVVLockedVolt = GetAtoVWVolts( dfPower, dfResistance );
-							//if ( ConfigIndex < 10 && !AtoError && AtoRez )
-							//{
-							//	dfSavedCfgPwr[ConfigIndex] = dfPower;
-							//}
 							break;
 
 						case 6: // +
@@ -1615,16 +1450,6 @@ __myevic__ void EventHandler()
                                                             //&& !AtoError && AtoRez
 							{
                                                             SmartPowerPM( 1 ); 
-/*
-								spwr = dfSavedCfgPwr[ConfigIndex];
-								spwr -= spwr % WattsInc; //10;
-								spwr += WattsInc; //10;
-								if ( spwr > AtoMaxPower ) spwr = AtoMaxPower;
-
-								dfSavedCfgPwr[ConfigIndex] = spwr;
-								dfVWVolts = GetAtoVWVolts( spwr, AtoRez );
-                                                                //dfPower = spwr;
-*/
 							}
 							break;
 
