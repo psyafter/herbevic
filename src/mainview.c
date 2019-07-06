@@ -718,10 +718,10 @@ __myevic__ void ShowFireDuration( int line )
         DrawPixel( 0, line+9, 0 );
         DrawPixel( 63, line+9, 0 );
 	DrawFillRect( 1, line+1, 62, line+8, 0 );
-	x = ( FireDuration > dfProtec * 10 / 2 ) ? 5 : 48 - 6 * digits;
+	x = ( FireDuration > dfProtec * 100 / 2 ) ? 5 : 48 - 6 * digits;
 	DrawValue( x, line+1, FireDuration / 10, 0, 0xB, 0 );
 	DrawImage( x + 7 + 6 * digits, line+1, 0x94 );
-	InvertRect( 1, line+1, 3 + 59 * FireDuration / (dfProtec * 10), line+8 );   
+	InvertRect( 1, line+1, 3 + 59 * FireDuration / (dfProtec * 100), line+8 );   
 
 }
 

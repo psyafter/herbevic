@@ -1327,7 +1327,7 @@ __myevic__ void Main()
                                     gFlags.refresh_display = 1;
                                 }
 
-                                if ( gFlags.apuff && dfStatus.endlessfire && FireDuration >= dfProtec * 10 )
+                                if ( gFlags.apuff && dfStatus.endlessfire && FireDuration >= dfProtec * 100 )
                                 {
                                     dfTimeCount += FireDuration;
                                     FireDuration = 0;
