@@ -799,7 +799,7 @@ __myevic__ void ResetDataFlash()
 	dfPreheatPwr = dfTCPower; //300;        
 	dfStatus.IsCelsius = 1;
 //	dfRezType = 1;
-	dfTemp = 200;
+	dfTemp = 190;
 //	dfResistance = 0;
 //	dfUIVersion = 2;
 	dfAPT = 10;
@@ -814,43 +814,43 @@ __myevic__ void ResetDataFlash()
 //      dfStatus.fireflip = 0;
 //      dfStatus.vvlite = 0;        //VVolt
 	dfStatus.nologo = 1;
-        dfAutoPuffTimer = 20;
+        dfAutoPuffTimer = AUTOPUFF_DEF;
 	dfStatus.x32off = X32Off;
 	dfStatus.onewatt = 1;
 	dfStatus.digclk = 1;
 //      dfStatus2.digclk2 = 0;      //00 01 10
-        dfStatus2.splash1 = 1;      //splash on with box name
+        dfStatus2.splash1 = 0;      //splash on with box name
 //	dfStatus.battpc = 1;
 //        dfBattLine = 1;
 	dfStatus.wakeonpm = 1;
-	dfScrMainTime = 5;          //index of ScrMainTimes[6] = { 30, 60, 5, 10, 15, 20 };
+	dfScrMainTime = 1;          //index of ScrMainTimes[6] = { 30, 60, 5, 10, 15, 20 };
 //      dfDimTimeout = 20;          //see dfScrMainTime; set in GetMainScreenDuration()
-        dfDimOffTimeout = 180;      //sleep timeout     
+        dfDimOffTimeout = 0;      //sleep timeout     
 	dfTCRM[0] = 90;
 	dfTCRM[1] = 100;
-	dfTCRM[2] = 110;
+	dfTCRM[2] = 120;
         dfUSBMaxCharge = 2000; 
         dfMaxBoardTemp = 70;
         dfBattVolt = 420;           //for zero counters on new battery
-	dfScreenSaver = SSAVER_SF;
+	dfScreenSaver = SSAVER_NONE;
 	dfScreenProt = 3;
 //	MemClear( dfSavedCfgRez, sizeof(dfSavedCfgRez) );
 //	MemClear( dfSavedCfgPwr, sizeof(dfSavedCfgPwr) );
 //        dfTTSpeed = 2;
-        dfColdLockTemp = 20;        //cels
-        dfNewRezPerc = 5;           //%
+        dfColdLockTemp = 27;        //cels
+        dfNewRezPerc = 50;           //%
 	dfContrast = 45;            //17%
-//      dfContrast2 = 0;
+    dfContrast2 = 20;
 //	dfModesSel = 0;
 	dfClkRatio = RTC_DEF_CLK_RATIO;
 	dfVVRatio = VVEL_DEF_RATIO; ////#define VVEL_DEF_RATIO	 300 //360
         dfPuffsOff = PUFFS_OFF_DEF;
-        dfHideLogo = 3;
+        dfHideLogo = 0;
 	dfPreheatTime = 10;
-	dfClick[0] = CLICK_ACTION_EDIT;
+	dfClick[0] = CLICK_ACTION_PROFILE;
 	dfClick[1] = CLICK_ACTION_ON_OFF;
-	dfClick[2] = CLICK_ACTION_TETRIS;
-        dfClick[3] = CLICK_ACTION_ON_OFF;
+	dfClick[2] = CLICK_ACTION_EDIT;
+    dfClick[3] = CLICK_ACTION_ON_OFF;
 //	dfBatteryModel = 0;
 //	dfTCAlgo = TCALGO_DEF; // =0 
 	dfTCBoost = 50;

@@ -41,15 +41,15 @@ enum
 
 #define TCALGO_DEF TCALGO_JOY
 
-#define PID_P_DEF	600
+#define PID_P_DEF	1850
 #define PID_P_MIN	1
 #define PID_P_MAX	6000
 
-#define PID_I_DEF	850
+#define PID_I_DEF	200
 #define PID_I_MIN	0
 #define PID_I_MAX	10000
 
-#define PID_D_DEF	0
+#define PID_D_DEF	10
 #define PID_D_MIN	0
 #define PID_D_MAX	5000
 
