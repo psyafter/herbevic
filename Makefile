@@ -7,7 +7,8 @@ TARGET := herbevic
 # change EVICSDK when building include paths.
 
 # Small fix to bug where cygpath -w mistranslates paths with mixed slashes (/, \)
-EVICSDK := $(subst \,/,$(EVICSDK))
+#EVICSDK := $(subst \,/,$(EVICSDK))
+EVICSDK := ../../../evic-sdk
 NUVOSDK = $(EVICSDK)/nuvoton-sdk/Library
 
 OBJS := $(NUVOSDK)/Device/Nuvoton/M451Series/Source/system_M451Series.o \
