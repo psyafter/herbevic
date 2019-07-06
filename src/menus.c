@@ -409,7 +409,7 @@ __myevic__ void VapingMenuIDraw( int it, int line, int sel )
                         else
                         {
                             DrawImageRight( 63, line+2, 0x94 );
-                            DrawValueRight( 57, line+2, dfAutoPuffTimer, 0, 0x0B, 0 );
+                            DrawValueRight( 57, line+2, dfAutoPuffTimer * 10, 0, 0x0B, 0 );
                         }
                         
                 	//if ( sel && gFlags.edit_value )
@@ -500,7 +500,7 @@ __myevic__ int VapingMenuOnEvent( int event )
 					break;                                        
                                         
 				case 11: // autopufftimers
-					if ( ++dfAutoPuffTimer > AUTOPUFF_MAX ) // 255 sec max
+					if ( ++dfAutoPuffTimer > AUTOPUFF_MAX ) 
 					{
 						if ( KeyTicks < 5 ) dfAutoPuffTimer = AUTOPUFF_MIN - 1;
 						else dfAutoPuffTimer = AUTOPUFF_MAX + 1;

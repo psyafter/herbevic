@@ -275,7 +275,7 @@ __myevic__ void GetUserInput()
                         else if ( KeyPressTime >= 20 && !AutoPuffTimer && Screen == 2 ) //on fire screen...
                         {
                             //AutoPuffTimer = (uint16_t)dfAutoPuffTimer * 10 - FireDuration * 10;
-                            AutoPuffTimer = ( (uint16_t)dfAutoPuffTimer * 10 - FireDuration ) * 10;
+                            AutoPuffTimer = ( (uint16_t)dfAutoPuffTimer * 100 - FireDuration ) * 10;
                             gFlags.apuff = 1;
                         }
                     }
@@ -292,7 +292,7 @@ __myevic__ void GetUserInput()
                                 if ( gFlags.apuff ) // 1 //for correct last FireDuration in TC
                                 {
                                     //gFlags.apuff = 0; //in StopFire(); 
-                                    FireDuration = (uint16_t)dfAutoPuffTimer * 10;
+                                    FireDuration = (uint16_t)dfAutoPuffTimer * 100;
                                     if ( dfStealthOn != 1 )
                                     {
                                         ShowFireDuration( 0 );

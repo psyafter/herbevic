@@ -23,8 +23,8 @@
 #define FIRE_PROTEC_MAX 60
 
 #define AUTOPUFF_MIN  1
-#define AUTOPUFF_DEF 10
-#define AUTOPUFF_MAX 254
+#define AUTOPUFF_DEF 1
+#define AUTOPUFF_MAX 60
 
 #define PUFFS_OFF_MIN  0
 #define PUFFS_OFF_DEF  0
