@@ -711,17 +711,26 @@ __myevic__ void DrawAPTLines()
 __myevic__ void ShowFireDuration( int line )
 {
 	int x;
-	int digits = FireDuration < 100 ? 0 : FireDuration < 1000 ? 1 : 2;
-	DrawFillRect( 0, line, 63, line+9, 1 );
-        DrawPixel( 0, 0, 0 );
-        DrawPixel( 63, 0, 0 );
-        DrawPixel( 0, line+9, 0 );
-        DrawPixel( 63, line+9, 0 );
-	DrawFillRect( 1, line+1, 62, line+8, 0 );
-	x = ( FireDuration > dfProtec * 100 / 2 ) ? 5 : 48 - 6 * digits;
-	DrawValue( x, line+1, FireDuration / 10, 0, 0xB, 0 );
-	DrawImage( x + 7 + 6 * digits, line+1, 0x94 );
-	InvertRect( 1, line+1, 3 + 59 * FireDuration / (dfProtec * 100), line+8 );   
+        int seconds = FireDuration / 10 % 60;
+        int minutes = FireDuration / 10 / 60;
+
+	DrawFillRect( 0, line, 63, line+9, 0 );
+        DrawFillRect( 0, line, 63 * FireDuration / (dfProtec * 100), line, 1 );
+        
+        x = 18;
+	line += 2;
+        
+        DrawValue( x, line, (minutes<10?0:minutes), 0, 0xB, 0 );
+        if(minutes<10)
+            DrawValue( x + 6, line, minutes, 0, 0xB, 0 );
+	
+        DrawImage( x + 13, line, 0xDD );
+        
+        DrawValue( x + 17, line, (seconds<10?0:seconds), 0, 0xB, 0 );
+        if(seconds<10)
+            DrawValue( x + 23, line, seconds, 0, 0xB, 0 );
+
+	DrawImage( x + 30, line, 0x94 );
 
 }
 
