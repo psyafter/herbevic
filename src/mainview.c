@@ -730,7 +730,7 @@ __myevic__ void ShowFireDuration( int line )
         if(seconds<10)
             DrawValue( x + 23, line, seconds, 0, 0xB, 0 );
 
-	DrawImage( x + 30, line, 0x94 );
+	//DrawImage( x + 30, line, 0x94 );
 
 }
 
